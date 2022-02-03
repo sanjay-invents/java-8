@@ -2,11 +2,19 @@ package com.learn.java.data;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class StudentDataBase {
 
-    public static Supplier<Student> studentSupplier = () -> new Student("Sophia", 4, 3.5, "female", Arrays.asList("swimming", "dancing", "football"));
+    public static Supplier<Student> studentSupplier = () -> {
+        Bike bike = new Bike();
+        bike.setName("ABC");
+        bike.setModel("XYZ");
+        Student student = new Student("Sophia", 4, 3.5, "female", Arrays.asList("swimming", "dancing", "football"));
+        student.setBike(Optional.ofNullable(bike));
+        return student;
+    };
 
     public static List<Student> getAllStudents() {
 
